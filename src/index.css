@@ -1,0 +1,185 @@
+@import url('https://fonts.googleapis.com/css2?family=Nabla&family=Roboto&display=swap');
+*,
+*::before,
+*::after {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+
+}
+body {
+  font-family: 'Roboto', sans-serif;
+  color: #251b2c;
+  
+}
+img {
+  width: 100px;
+}
+.App {
+  /*background: url(https://images.pexels.com/photos/1755243/pexels-photo-1755243.jpeg?auto=compress&cs=tinysrgb&w=1260&h=750&dpr=1);
+  background-size: cover;
+  background-position: bottom;
+  transition: 0.4s ease-out;*/
+  background-color: #29c089;
+  color: aliceblue;
+  
+}
+.App.sunny {
+  background-color: #01b3d9;
+}
+
+.App.frosty {
+  background-color: #6cb6d9;
+}
+.App.rainy {
+  background: #004b85;
+  color: aliceblue;
+}
+.App.cloudy {
+  background: #ffa922;
+  color: #fff;
+  background-image: linear-gradient(to bottom, rgba(0, 0, 0, 0.01), rgba(0, 0, 0, 0.3));
+}
+
+
+
+
+.App.cold {
+ /* background: url(https://images.pexels.com/photos/397979/pexels-photo-397979.jpeg?cs=srgb&dl=pexels-sarmad-mughal-397979.jpg&fm=jpg);*/
+  background-color: #6cb6d9;
+ background-size: cover;
+  background-position: bottom;
+  transition: 0.4s ease-out;
+}
+
+main {
+  min-height: 100vh;
+ 
+ /* background-image: linear-gradient(to bottom, rgba(0, 0, 0, 0.01), rgba(0, 0, 0, 0.3));*/
+  padding-block: 25px;
+  padding-left: 3%;
+  padding-right: 3%;
+}
+.weather-container {
+  width: 300px;
+  margin-left: auto;
+  margin-right: auto;
+  
+}
+.search {
+  width: 100%;
+  margin: 0 0 40px;
+
+}
+
+.search-bar {
+  display: block;
+  width: 100%;
+  padding: 15px;
+  appearance: none;
+  background: none;
+  border: none;
+  outline: none;
+  background-color: rgba(255, 255, 255, 0.6);
+  border-radius: 0px 0px 16px 16px;
+  margin-top: -25px;
+  box-shadow: 0px 5px rgba(0, 0, 0, 0.2);
+  color: #313131;
+  font-size: 20px;
+  transition: 0.4s ease;
+  
+}
+
+.search-bar:focus {
+  background-color: rgba(255, 255, 255, 0.75);
+}
+
+.location-box {
+  text-align: left;
+  
+}
+
+.location {
+  /*color: #fff;*/
+  font-size: 1.3rem;
+  font-weight: 700;
+  
+  /*text-shadow: 3px 3px rgba(50, 50, 70, 0.5);*/
+
+}
+
+.date {
+  /*color: #fff;*/
+  font-size: 1rem;
+  font-weight: 300;
+  font-style: italic;
+  margin-top: 0.45rem;
+  text-shadow: rgba(50, 50, 70, 0.5);
+}
+
+.weather-box {
+  text-align: center;
+}
+.weatherNews {
+  width: 300px;
+  margin-top: 10vh;
+}
+.temp {
+  position: relative;
+  display: inline-block;
+  margin: 10px auto;
+  /*font-family: 'Nabla', cursive;*/
+  /*background-color: rgba(255, 255, 255, 0.2);*/
+  border-radius: 16px;
+ /* padding: 15px 25px;*/
+  font-size: 5rem;
+  font-weight: 700;
+  /*text-shadow: 3px 6px rgba(50, 50, 70, 0.5);*/
+  text-align: center;
+  /*box-shadow: 3px 6px rgba(0, 0, 0, 0.2);*/
+}
+
+.weather {
+  /*color: #fff;*/
+  font-size: 1.3rem;
+  margin-top: 2rem;
+  text-transform: capitalize;
+  /*font-weight: 700;8/
+  /*text-shadow: 3px 3px rgba(50, 50, 70, 0.5);*/
+}
+.weather-image {
+  margin-top: 4rem;
+  width: 180px;
+}
+.not-found {
+  color: red;
+  text-align: center;
+  margin-top: 20vh;
+  font-size: 1.3rem;
+  text-transform: capitalize;
+  border: 2px solid red;
+  width: 220px;
+  margin-left: auto;
+  margin-right: auto;
+  padding: 1rem 0.3rem;
+  font-weight: 700;
+}
+
+.sunnyblue {
+  background:#01b3d9}
+
+.frostyblue {
+  background: #6cb6d9;
+}
+.rainyblue {
+  background: #004b85;
+}
+.cloudyyellow {
+  background: #ffa922;
+}
+
+@media only screen and(max-width: 760px) {
+  .weather-container {
+    width: 700px;
+  }
+}
