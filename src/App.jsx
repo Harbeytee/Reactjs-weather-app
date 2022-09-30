@@ -6,7 +6,7 @@ import rain from './assets/rain.png'
 import snow from './assets/snow.png'
 import './App.css'
 const api = {
-  key: import.meta.env.VITE_API_KEY,
+  key: "a96751e2a5ad2f34104e782f01f85577",
   base: "https://api.openweathermap.org/data/2.5/"
 }
 
