@@ -1,10 +1,13 @@
-import { useState } from 'react'
+import { useState, useEffect } from 'react'
 import weatherNews from './assets/weather-news.png'
 import sun from './assets/sun.png'
 import cloud from './assets/clouds.png'
 import rain from './assets/rain.png'
 import snow from './assets/snow.png'
+import storm from './assets/storm.png'
+import drizzle from './assets/drizzle.png'
 import './App.css'
+import Weather from './components/Weather'
 const api = {
   key: "a96751e2a5ad2f34104e782f01f85577",
   base: "https://api.openweathermap.org/data/2.5/"
@@ -13,23 +16,50 @@ const api = {
 //https://api.openweathermap.org/data/2.5/weather?lat={lat}&lon={lon}&appid={API key}
 
 
-const dateBuilder = (d) => {
-  let months = ["January", "February", "March", "April", "May", "June", "July", "August", "September", "October", "November", "December"];
-  let days = ["Sunday", "Monday", "Tuesday", "Wednesday", "Thursday", "Friday", "Saturday"];
 
-  let day = days[d.getDay()];
-  let date = d.getDate();
-  let month = months[d.getMonth()];
-
-  let year = d.getFullYear();
-
-  return `${day} ${date} ${month} ${year}`;
-}
 
 function App() {
   
   const [query, setQuery] = useState('');
   const [weather, setWeather] = useState([]);
+  /*const [lat, setLat] = useState([])
+  const [long, setLong] = useState([])
+  const [data, setData] = useState([])*/
+
+
+  /*useEffect(() => {
+    const fetchData = async () => {
+    navigator.geolocation.getCurrentPosition(
+      function(position) {
+        setLat(position.coords.latitude)
+        setLong(position.coords.longitude)
+      }
+    )
+
+    console.log ( `latitude is ${lat}` )
+    console.log ( `longitude is ${long}` )
+
+
+
+    const response = await fetch(`${api.base}weather?lat=${lat}&lon=${long}&units=metric&appid=${api.key}`)
+    const result = await response.json()
+    console.log(result)
+    setData(result)
+    console.log(response)
+    }
+    
+      fetchData()
+
+  }, [lat, long])*/
+
+  
+    
+    
+    
+ 
+  
+
+  
 
   function search(e) {
     if(e.key === 'Enter') {
@@ -49,9 +79,7 @@ function App() {
 
   function weathericon() {
     if (weather.weather[0].main == 'Clouds') {
-      if(weather.main.temp < 0) {
-        return snow
-      }
+      
       return cloud
     }
     else if(weather.weather[0].main == 'Rain') {
@@ -59,6 +87,15 @@ function App() {
     }
     else if(weather.weather[0].main == 'Clear') {
       return sun
+    }
+    else if(weather.weather[0].main == 'Snow') {
+      return snow
+    }
+    else if(weather.weather[0].main == 'Thunderstorm') {
+      return storm
+    }
+    else if(weather.weather[0].main == 'Drizzle') {
+      return drizzle
     }
     console.log(weather.weather[0].main)
     
@@ -80,30 +117,29 @@ function App() {
       return 'App frosty'
     }
 
-    else if(icon == rain) {
+    else if(icon == rain || icon == drizzle) {
       return 'App rainy'
     }
 
     else if(icon == cloud) {
       return 'App cloudy'
     }
-
+    else if(icon == storm) {
+      return 'App storm'
+    }
 
     return 'App'
 
-
-
-    /*if(typeof weather.main!== 'undefined') {
-      if (weather.main.temp < 16) {
-          return 'App cold'
-      }
-      return 'App'
-    }
-    return 'App'*/
   }
-
+  const styles = {
+    backgroundRepeat: 'no-repeat',
+    backgroundSize: 'cover',
+    backgroundPosition: 'center',
+    imageRendering: 'pixelated',
+    
+  }
   return (
-    <div className={changeBackground()}>
+    <div style ={styles} className={changeBackground()}>
       <main>
         <div className="search">
           <input type="text" 
@@ -119,27 +155,34 @@ function App() {
         {
           !Array.isArray(weather)?
           typeof weather.main != "undefined"?
+
+          <Weather 
+          city ={weather.name}
+          country={weather.sys.country}
+          image={weathericon()}
+          description={weather.weather[0].description}
+          temp={Math.round(weather.main.temp)}
+          />
           
-        <div className='weather-container'>
-
-          <div className='location-box'>
-            <div className='location'>{weather.name}, {weather.sys.country}</div>
-            <div className='date'>{dateBuilder(new Date())}</div>
-
-          </div>
-
-          <div className="weather-box">
-              <img src={weathericon()} className='weather-image' alt="sun icon"/>
-              <div className="weather">{weather.weather[0].description}</div>
-              <div className="temp">{Math.round(weather.main.temp)}°c </div>
-              
-          </div>
-        </div>
+        
         :
         <div className='not-found'>
           city not found!
         </div>
         :
+        /*
+        typeof data.main !== 'undefined' && <Weather 
+        city ={data.name}
+        country={data.sys.country}
+        /*image={weathericon()}
+        description={data.weather[0].description}
+        temp={Math.round(data.main.temp)}
+        />*/
+       
+
+        
+
+          
         <div className="weather-box">
           <img className='weatherNews' src={weatherNews} />
           
