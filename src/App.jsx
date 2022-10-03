@@ -69,7 +69,7 @@ function App() {
          
           setWeather(result)
           setQuery('')
-          console.log(result)
+          
           }
       );
     }
